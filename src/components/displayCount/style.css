@@ -1,0 +1,16 @@
+.button-wrapper {
+  margin-top: 20px;
+}
+
+.display-count {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+/* .count-container {
+  height: 100px;
+} */
+
+.name-input {
+  margin-top: 15px;
+}

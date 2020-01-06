@@ -1,0 +1,9 @@
+.submit {
+  padding: 10px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: cadetblue;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}

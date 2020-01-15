@@ -1,35 +1,39 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../button';
+
 import './style.css';
 
-class DisplayCount extends Component {
- 
-  constructor(props){
-    super();
-    this.state = {
-      count: 0,
-      name: '',
-    };
-  }
+const displayCount  = () => { 
 
-  incrementCount = () => {
-   let { count } = this.state;
-   this.setState({count: count+=1});
+const [count, setCount] = useState(0);
+const [name, setName] = useState(''); 
+
+useEffect(()=>{
+  console.log('Hello-',count);  
+  return () => {
+    console.log('cleaning ----') 
   }
- 
-  handleChange = (e) => {
-    this.setState({name: e.target.value});
-  }
-  render(){
-    const { count, name } = this.state;
-    return(
-      <div className='count-container' data-test='countComponent'>
-        <div className='display-count'>{count}</div>
-        <div className='button-wrapper'>{<Button handleClick={this.incrementCount}/>}</div>
-        <input className='name-input' type='text' value={name} name='name' onChange={this.handleChange}/>
-      </div>
-    )
-  }
+}, [count]);
+
+const incrementCount = () => {
+  setCount(count + 1);
 }
 
-export default DisplayCount;
+
+const handleChange = (e) => {
+  setName(e.target.value);
+}
+ if(count === 5)
+   throw new Error('I crashed');
+  else {
+    return(
+        <div className='count-container' data-test='countComponent'>
+          <div className='display-count'>{count}</div>
+          <div className='button-wrapper'>{<Button handleClick={incrementCount}/>}</div>
+          <input className='name-input' type='text' value={name} name='name' onChange={handleChange}/>
+        </div>
+    );
+  } 
+}
+
+export default displayCount;
